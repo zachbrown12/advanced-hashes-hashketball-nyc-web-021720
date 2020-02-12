@@ -217,17 +217,7 @@ def big_shoe_rebounds
 end
 
 
-def player_names(team_name)
-    names = []
-    game_hash.each do |origin, team|
-        team[:players].each do |name, stats|
-            if team[:team_name] ==  team_name
-                names << name
-            end
-        end
-    end
-    return names
-end
+
 
 
 def most_points_scored
@@ -244,35 +234,7 @@ def most_points_scored
   player
 end
 
-def num_points_scored(player_name)
-    game_hash.each do |origin, team|
-      stats = team[:players][player_name]
-      if stats # If not empty
-          return stats[:points]
-      end
-    end
-end
 
-def total_points_scored(team_name)
-    players = player_names(team_name)
-    total_points = 0
-    name = ""
-
-    players.each do |player|
-        total_points = total_points + num_points_scored(player)
-    end
-    return total_points
-end
-
-def winning_team(team_name1 ="Brooklyn Nets", team_name2 ="Charlotte Hornets")
-    winner = ""
-    if total_points_scored(team_name1) < total_points_scored(team_name2)
-        winner = team_name2
-    else
-        winner = team_name1
-    end
-    return winner
-end
 
 
 
